@@ -4,6 +4,8 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer'); // Import 
 const { allureCypress } = require("allure-cypress/reporter"); 
 
 module.exports = defineConfig({
+  viewportWidth: 1280,  // Largeur de la fenêtre
+  viewportHeight: 800,  // Hauteur de la fenêtre
   env: {
     // Vous pouvez ajouter ici les valeurs pour username, password, etc.
   },
@@ -11,7 +13,7 @@ module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     charts: true,
-    reportPageTitle: 'SAUCE DEMO HTML-Report',
+    reportPageTitle: 'AutomationTestStore HTML-Report',
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: false,
@@ -33,10 +35,11 @@ module.exports = defineConfig({
       allureWriter(on, config);  // Ajoutez cette ligne pour que Allure fonctionne correctement
       allureCypress(on, config);
       
+      
       return config;
     },
     
-    baseUrl: "https://www.saucedemo.com", // URL de base pour vos tests
+    baseUrl: "https://automationteststore.com/", // URL de base pour vos tests
     specPattern: "cypress/e2e/Feature/**/*.feature", // Emplacement des fichiers de tests
   },
 });
